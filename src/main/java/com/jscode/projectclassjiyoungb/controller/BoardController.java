@@ -1,0 +1,39 @@
+package com.jscode.projectclassjiyoungb.controller;
+
+import com.jscode.projectclassjiyoungb.dto.BoardRequestDto;
+import com.jscode.projectclassjiyoungb.dto.BoardResponseDto;
+import com.jscode.projectclassjiyoungb.model.Board2;
+import com.jscode.projectclassjiyoungb.service.BoardServiceImple;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequiredArgsConstructor
+public class BoardController {
+    private final BoardServiceImple boardService;
+
+
+    @GetMapping("/board")
+    public ResponseEntity<?> BoardList(){
+        return ResponseEntity.ok()
+                .body(boardService.getAllList());
+    }
+
+
+/*    @PostMapping("/board")
+    public ResponseEntity<Board2> createBoard(@RequestBody BoardRequestDto boardRequestDto){
+        Board2 board2 = boardService.createBoard(boardRequestDto);
+        return ResponseEntity.ok().body(board2);
+
+    }*/
+    @PostMapping("/board")
+    public ResponseEntity<BoardResponseDto> createBoard(@RequestBody BoardRequestDto boardRequestDto){
+        BoardResponseDto board2 = boardService.createBoard(boardRequestDto);
+        return ResponseEntity.ok().body(board2);
+
+    }
+}
