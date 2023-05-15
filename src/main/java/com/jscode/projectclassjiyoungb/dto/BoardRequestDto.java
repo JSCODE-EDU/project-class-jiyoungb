@@ -8,13 +8,13 @@ import oracle.jdbc.proxy.annotation.Post;
 
 @Getter
 public class BoardRequestDto {
-    private Long boardId;
+    private Long id;
     private String title;
     private String content;
 
     @Builder
-    public BoardRequestDto(Long boardId, String title, String content) {
-        this.boardId = boardId;
+    public BoardRequestDto(Long id, String title, String content) {
+        this.id = id;
         this.title = title;
         this.content = content;
     }

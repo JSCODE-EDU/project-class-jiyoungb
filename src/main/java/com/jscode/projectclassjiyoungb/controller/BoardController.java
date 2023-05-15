@@ -35,8 +35,9 @@ public class BoardController {
     }
 
     @GetMapping("/board/{id}")
-    public ResponseEntity<BoardResponseDto> boardView(@PathVariable Integer id){
+    public ResponseEntity<Board2> boardView(@PathVariable Long id){
+        Board2 board2 = boardService.getBoard(id);
 
-        return null;
+        return ResponseEntity.ok().body(board2);
     }
 }

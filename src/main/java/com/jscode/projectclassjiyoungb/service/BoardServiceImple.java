@@ -5,7 +5,6 @@ import com.jscode.projectclassjiyoungb.dto.BoardResponseDto;
 import com.jscode.projectclassjiyoungb.model.Board2;
 import com.jscode.projectclassjiyoungb.repository.Board2Repository;
 import lombok.RequiredArgsConstructor;
-import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,4 +46,8 @@ public class BoardServiceImple implements BoardService{
     }
 
 
+    public Board2 getBoard(Long id) {
+        Board2 board = board2Repository.findById(id).orElseThrow(IllegalArgumentException::new);
+        return board;
+    }
 }
