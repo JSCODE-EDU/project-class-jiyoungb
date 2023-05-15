@@ -1,6 +1,7 @@
 package com.jscode.projectclassjiyoungb.model;
 
 
+import com.jscode.projectclassjiyoungb.dto.BoardResponseDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,4 +29,11 @@ public class Board2 {
     }
 
 
+    public BoardResponseDto toDto() {
+        return BoardResponseDto.builder()
+                .id(id)
+                .title(title)
+                .content(content)
+                .build();
+    }
 }

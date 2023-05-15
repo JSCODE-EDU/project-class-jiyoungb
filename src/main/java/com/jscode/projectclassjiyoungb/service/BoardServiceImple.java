@@ -5,6 +5,7 @@ import com.jscode.projectclassjiyoungb.dto.BoardResponseDto;
 import com.jscode.projectclassjiyoungb.model.Board2;
 import com.jscode.projectclassjiyoungb.repository.Board2Repository;
 import lombok.RequiredArgsConstructor;
+import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,14 +28,22 @@ public class BoardServiceImple implements BoardService{
     @Override
     @Transactional
     public BoardResponseDto createBoard(BoardRequestDto boardRequestDto) {
+        // requestDto -> Board2 Entity
+        Board2 board2 = boardRequestDto.toEntity();
 
-        Board2 board2 = Board2.builder()
+        /*Board2 board2 = Board2.builder()
                .title(boardRequestDto.getTitle())
                .content(boardRequestDto.getContent())
-               .build();
+               .build();*/
 
-        board2Repository.save(board2);
-        return new BoardResponseDto(board2.getId(), board2.getTitle(), board2.getContent());
+        // Board2 생성
+        Board2 savedBoard = board2Repository.save(board2);
+
+
+        // Board2 Entity -> Response DTO
+        BoardResponseDto boardResponseDto = savedBoard.toDto();
+        /*return new BoardResponseDto(board2.getId(), board2.getTitle(), board2.getContent());*/
+        return boardResponseDto;
     }
 
 
