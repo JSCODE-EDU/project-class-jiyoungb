@@ -10,5 +10,8 @@ public interface BoardService {
 
     List<Board2>  getAllList();
     BoardResponseDto createBoard(BoardRequestDto boardRequestDto);
+    Board2 getBoard(Long id);
+
+    BoardResponseDto updateBoard(Long id, BoardRequestDto boardRequestDto);
 
 }

@@ -8,9 +8,9 @@ import javax.persistence.*;
 
 
 @Getter
-
+@Setter
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Board2 {
 

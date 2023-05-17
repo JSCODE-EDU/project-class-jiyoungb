@@ -50,4 +50,21 @@ public class BoardServiceImple implements BoardService{
         Board2 board = board2Repository.findById(id).orElseThrow(IllegalArgumentException::new);
         return board;
     }
+    @Transactional
+    public BoardResponseDto updateBoard(Long id, BoardRequestDto boardRequestDto) {
+        Board2 board2 = board2Repository.findById(id).orElseThrow(IllegalArgumentException::new);
+        //board2.builder().title(boardRequestDto.getTitle()).content(boardRequestDto.getContent()).build();
+        board2.setTitle(boardRequestDto.getTitle());
+        board2.setContent(boardRequestDto.getContent());
+
+
+        // Board2 생성
+        Board2 updatedBoard = board2Repository.save(board2);
+
+
+        // Board2 Entity -> Response DTO
+        BoardResponseDto boardResponseDto = updatedBoard.toDto();
+        /*return new BoardResponseDto(board2.getId(), board2.getTitle(), board2.getContent());*/
+        return boardResponseDto;
+    }
 }

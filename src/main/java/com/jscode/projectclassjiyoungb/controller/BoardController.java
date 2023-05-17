@@ -40,4 +40,11 @@ public class BoardController {
 
         return ResponseEntity.ok().body(board2);
     }
+
+    @PostMapping("/board/{id}")
+    public ResponseEntity<BoardResponseDto> modifyBoard(@PathVariable Long id, @RequestBody BoardRequestDto boardRequestDto){
+        BoardResponseDto boardResponseDto = boardService.updateBoard(id, boardRequestDto);
+        return ResponseEntity.ok().body(boardResponseDto);
+
+    }
 }
