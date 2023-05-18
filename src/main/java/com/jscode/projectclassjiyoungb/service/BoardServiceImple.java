@@ -21,7 +21,10 @@ public class BoardServiceImple implements BoardService{
 
     @Override
     public List<Board2> getAllList() {
-        return board2Repository.findAll();
+
+        //return board2Repository.findAll();
+        return board2Repository.findAllByOrderByCreatedAtDesc();
+
     }
 
     @Override
