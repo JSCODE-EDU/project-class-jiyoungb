@@ -67,4 +67,12 @@ public class BoardServiceImple implements BoardService{
         /*return new BoardResponseDto(board2.getId(), board2.getTitle(), board2.getContent());*/
         return boardResponseDto;
     }
+
+    @Override
+    public Long deleteBoard(Long id) {
+        board2Repository.deleteById(id);
+        return id;
+
+
+    }
 }
