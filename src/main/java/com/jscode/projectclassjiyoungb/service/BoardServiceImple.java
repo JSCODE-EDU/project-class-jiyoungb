@@ -6,6 +6,7 @@ import com.jscode.projectclassjiyoungb.model.Board2;
 import com.jscode.projectclassjiyoungb.repository.Board2Repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,10 +21,10 @@ public class BoardServiceImple implements BoardService{
 
 
     @Override
-    public List<Board2> getAllList() {
+    public List<Board2> getAllList(Pageable pageable) {
 
         //return board2Repository.findAll();
-        return board2Repository.findAllByOrderByCreatedAtDesc();
+        return board2Repository.findAllByOrderByCreatedAtDesc(pageable);
 
     }
 

@@ -5,6 +5,9 @@ import com.jscode.projectclassjiyoungb.dto.BoardResponseDto;
 import com.jscode.projectclassjiyoungb.model.Board2;
 import com.jscode.projectclassjiyoungb.service.BoardServiceImple;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +18,9 @@ public class BoardController {
 
 
     @GetMapping("/board")
-    public ResponseEntity<?> BoardList(){
+    public ResponseEntity<?> BoardList(@PageableDefault(sort="createdAt", direction = Sort.Direction.DESC, size = 5)Pageable pageable){
         return ResponseEntity.ok()
-                .body(boardService.getAllList());
+                .body(boardService.getAllList(pageable));
     }
 
 
