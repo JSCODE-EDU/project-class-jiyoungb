@@ -8,11 +8,11 @@ import javax.persistence.*;
 
 
 @Getter
-
+@Setter
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
-public class Board2 {
+public class Board2 extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -4,8 +4,9 @@ import com.jscode.projectclassjiyoungb.model.Board2;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 import oracle.jdbc.proxy.annotation.Post;
-
+@Setter
 @Getter
 public class BoardRequestDto {
     private Long id;
