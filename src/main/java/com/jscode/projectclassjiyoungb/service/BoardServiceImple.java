@@ -29,6 +29,11 @@ public class BoardServiceImple implements BoardService{
     }
 
     @Override
+    public List<Board2> searchByTitle(String keyword, Pageable pageable) {
+        return board2Repository.findByTitleContainingIgnoreCaseOrderByCreatedAtDesc(keyword, pageable);
+    }
+
+    @Override
     @Transactional
     public BoardResponseDto createBoard(BoardRequestDto boardRequestDto) {
         // requestDto -> Board2 Entity

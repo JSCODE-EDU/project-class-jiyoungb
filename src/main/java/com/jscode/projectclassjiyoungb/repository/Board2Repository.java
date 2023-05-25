@@ -12,4 +12,6 @@ import java.util.List;
 public interface Board2Repository extends PagingAndSortingRepository<Board2, Long> {
     //List<Board2> findAllByOrderByCreatedAtDesc();
     List<Board2> findAllByOrderByCreatedAtDesc(Pageable pageable);
+
+    List<Board2> findByTitleContainingIgnoreCaseOrderByCreatedAtDesc(String keyword, Pageable pageable);
 }

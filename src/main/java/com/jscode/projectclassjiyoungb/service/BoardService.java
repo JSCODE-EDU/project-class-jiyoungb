@@ -16,4 +16,6 @@ public interface BoardService {
     BoardResponseDto updateBoard(Long id, BoardRequestDto boardRequestDto);
 
     Long deleteBoard(Long id);
+
+    List<Board2> searchByTitle(String keyword, Pageable pageable);
 }

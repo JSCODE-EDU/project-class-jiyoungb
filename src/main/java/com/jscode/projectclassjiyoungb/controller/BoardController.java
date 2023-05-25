@@ -11,17 +11,20 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+//@CrossOrigin(origins="*")
 @RestController
 @RequiredArgsConstructor
 public class BoardController {
     private final BoardServiceImple boardService;
 
 
-    @GetMapping("/board")
+   /* @GetMapping("/board")
     public ResponseEntity<?> BoardList(@PageableDefault(sort="createdAt", direction = Sort.Direction.DESC, size = 5)Pageable pageable){
         return ResponseEntity.ok()
                 .body(boardService.getAllList(pageable));
-    }
+    }*/
 
 
 /*    @PostMapping("/board")
@@ -36,6 +39,21 @@ public class BoardController {
         return ResponseEntity.ok().body(board2);
 
     }
+
+    @GetMapping("/board")
+    public ResponseEntity<?> BoardList(
+            @RequestParam(required = false) String keyword,
+            @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC, size = 5) Pageable pageable) {
+        if (keyword != null && !keyword.isEmpty()) {
+            List<Board2> searchResult = boardService.searchByTitle(keyword, pageable);
+            return ResponseEntity.ok().body(searchResult);
+        } else {
+            List<Board2> boardList = boardService.getAllList(pageable);
+            return ResponseEntity.ok().body(boardList);
+        }
+    }
+
+
 
     @GetMapping("/board/{id}")
     public ResponseEntity<Board2> boardView(@PathVariable Long id){
